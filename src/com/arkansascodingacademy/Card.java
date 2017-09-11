@@ -57,6 +57,7 @@ public class Card
             System.out.println();
         }
     }
+
     public void play(int number)
     {
 
@@ -81,6 +82,36 @@ public class Card
     public boolean bingo()
     {
         boolean bingo = false;
+        if (bingoByColumn() || bingoByRow())
+        {
+            bingo = true;
+        }
+        return bingo;
+    }
+
+    private boolean bingoByColumn()
+    {
+        boolean bingo = false;
+
+
+        for (int column = 0; column < 5; column++)
+
+            if (square[0][column].isCovered() &&
+                    square[1][column].isCovered() &&
+                    square[2][column].isCovered() &&
+                    square[3][column].isCovered() &&
+                    square[4][column].isCovered())
+
+            {
+                bingo = true;
+            }
+
+        return bingo;
+    }
+
+    private boolean bingoByRow()
+    {
+        boolean bingo = false;
 
         //check for now
         for (int row = 0; row < 5; row++)
@@ -98,18 +129,6 @@ public class Card
                 bingo = true;
             }
         }
-            for (int column = 0; column < 5; column++)
-
-                if (square[0][column].isCovered() &&
-                        square[1][column].isCovered() &&
-                        square[2][column].isCovered() &&
-                        square[3][column].isCovered() &&
-                        square[4][column].isCovered())
-
-        {
-            bingo = true;
-        }
-
         return bingo;
     }
 
